@@ -5,8 +5,9 @@ Currently, this plugin only supports the use of variables prefixed with '$' symb
 Usage:
 
 ```javascript
-var x = { $environment: "test",\
-  resultValue: "variable $environment = " + $environment\
+var x = { 
+  $environment: "test",
+  resultValue: "variable $environment = " + $environment
 }
 ```
 
