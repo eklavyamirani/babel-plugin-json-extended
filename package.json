@@ -4,7 +4,7 @@
   "description": "a plugin for babel that allows extending the json format",
   "main": "dist/index.js",
   "scripts": {
-    "build": "babel src -d dist",
+    "build": "./node_modules/.bin/babel src -d dist",
     "pretest": "npm run build",
     "test": "./node_modules/.bin/jasmine"
   },
@@ -21,6 +21,8 @@
   "private": true,
   "homepage": "https://github.com/eklavyamirani/babel-plugin-json-extended",
   "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.22.2",
     "babel-core": "^6.3.26",
     "babel-generator": "^6.22.0",
     "babel-loader": "^6.2.0",
