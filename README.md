@@ -17,7 +17,7 @@ Outputs:
 
 ```javascript
 var x = {
-  resultValue: "variable $environment = test"
+  "resultValue": "variable $environment = test"
 }
 ```
 

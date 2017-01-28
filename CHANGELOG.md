@@ -2,3 +2,4 @@
 
 - The first release
 Added support for '$' prefixed variable replacement.
+Added the property name to be output as a string literal, i.e. property: "value" -> "property": "value"

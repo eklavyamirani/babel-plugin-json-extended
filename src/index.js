@@ -14,6 +14,10 @@ const plugin = function (babel) {
           processor.Identifiers[path.node.key.name] = path.node.value.value;
           path.remove();
         }
+        else
+        {
+          path.node.key = types.stringLiteral(path.node.key.name);
+        }
       },
       BinaryExpression(path) {
         processor.combineBinaryStrings(path, types);

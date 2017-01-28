@@ -13,7 +13,7 @@ describe("json-extended", function () {
 }';
 
     let expectedOutput = 'var x = {\n\
-  resultValue: "variable $environment = test"\n\
+  "resultValue": "variable $environment = test"\n\
 };';
 
     let ast = babylon.parse(input);
