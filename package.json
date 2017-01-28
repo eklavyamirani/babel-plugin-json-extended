@@ -1,5 +1,5 @@
 {
-  "name": "babel-plugin-foo-bar",
+  "name": "babel-plugin-json-extended",
   "version": "0.0.1",
   "description": "a plugin for babel that allows extending the json format",
   "main": "dist/index.js",
