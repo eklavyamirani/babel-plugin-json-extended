@@ -1,3 +1,5 @@
+[![build status](https://travis-ci.org/eklavyamirani/babel-plugin-json-extended.svg?branch=master)](https://travis-ci.org/eklavyamirani/babel-plugin-json-extended)
+
 **This plugin is an experiment to extend the json file format, and a personal project for me to understand more about babel plugins, and transpilation.**
 
 Currently, this plugin only supports the use of variables prefixed with '$' symbol.
