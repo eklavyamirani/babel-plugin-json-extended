@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-var _BinaryStringProcessor = require('./BinaryStringProcessor');
+var _BinaryStringProcessor = require("./BinaryStringProcessor");
 
 var plugin = function plugin(babel) {
   var types = babel.types;
@@ -8,6 +8,11 @@ var plugin = function plugin(babel) {
 
   return {
     visitor: {
+      Program: function Program(path) {
+        var body = path.get("body.0");
+        var rootExpressionBody = body.get("declarations.0").node.init;
+        path.node.body[0] = rootExpressionBody;
+      },
       Property: function Property(path) {
         if (path.node.key.name[0] === '$') {
           processor.Identifiers[path.node.key.name] = path.node.value.value;

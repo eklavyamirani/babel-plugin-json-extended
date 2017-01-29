@@ -9,6 +9,11 @@ const plugin = function (babel) {
 
   return {
     visitor: {
+      Program (path) {
+        let body = path.get("body.0");
+        const rootExpressionBody = body.get("declarations.0").node.init;
+        path.node.body[0] = rootExpressionBody;
+      },
       Property(path) {
         if (path.node.key.name[0] === '$') {
           processor.Identifiers[path.node.key.name] = path.node.value.value;

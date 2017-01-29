@@ -12,9 +12,9 @@ describe("json-extended", function () {
   resultValue: "variable $environment = " + $environment\
 }';
 
-    let expectedOutput = 'var x = {\n\
+    let expectedOutput = '{\n\
   "resultValue": "variable $environment = test"\n\
-};';
+}';
 
     let ast = babylon.parse(input);
     traverse(ast, pluginToTest({types: types}).visitor);
@@ -27,6 +27,6 @@ describe("json-extended", function () {
       }
     });
 
-    expect(expectedOutput).toEqual(actualOutput);
+    expect(actualOutput).toEqual(expectedOutput);
   });
 });
