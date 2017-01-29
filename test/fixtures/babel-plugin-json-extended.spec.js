@@ -7,6 +7,28 @@ const generate = require('babel-generator').default;
 const pluginToTest = require('../../dist/index')
 
 describe("json-extended", function () {
+
+  const runPlugin = function (input)
+  {
+    if (!input)
+    {
+      throw "empty input."
+    }
+
+    let ast = babylon.parse(input);
+    traverse(ast, pluginToTest({types: types}).visitor);
+
+    let output;
+    traverse(ast, {
+      Program: function (_path) {
+        output = generate(_path.node).code;
+        _path.stop();
+      }
+    });
+
+    return output;
+  }
+
   it("replaces variables successfully", function () {
     let input = 'var x = { $environment: "test",\
   resultValue: "variable $environment = " + $environment\
@@ -16,17 +38,18 @@ describe("json-extended", function () {
   "resultValue": "variable $environment = test"\n\
 }';
 
-    let ast = babylon.parse(input);
-    traverse(ast, pluginToTest({types: types}).visitor);
+    const actualOutput = runPlugin(input);
+    expect(actualOutput).toEqual(expectedOutput);
+  });
 
-    let actualOutput;
-    traverse(ast, {
-      Program: function (_path) {
-        actualOutput = generate(_path.node).code;
-        _path.stop();
-      }
-    });
+  it ('removes the root level variable declaration from the output', function () {
+    // TODO: babylon strips the spaces in the output.
+    // hence adding a space might break the code. 
+    let input = 'var x = {}';
 
+    let expectedOutput = '{}';
+
+    const actualOutput = runPlugin(input);
     expect(actualOutput).toEqual(expectedOutput);
   });
 });
